@@ -1,0 +1,686 @@
+﻿@{
+    ViewBag.Title = "View Transport Record";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .table > tbody > tr > td {
+        padding: 5px !important;
+    }
+</style>
+
+
+<div class="modal fade" id="updateModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+
+                <h2 class="text-center text-bold">Update Transport Record</h2>
+
+                <button type="button" class="close text-danger" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <form id="AddForm" action="@Url.Action("PostupdateTransporterRecord", "Admin")" method="post">
+                    <input hidden id="updId" name="Id" />
+                    <input hidden name="DriverId" id="driverId" />
+
+
+                    <div class="panel-body">
+                        <legend class="text-bold text-uppercase"><span class="text-danger">*</span> Fields are mandatory to fill</legend>
+
+                        <div hidden class="form-group">
+                            <label class="text-bold">#No<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" required name="No" id="No" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label class="text-bold">Date<span class="text-danger">*</span></label>
+                            <input type="date" class="form-control" required name="Date" id="Date" placeholder="Enter Date">
+                        </div>
+
+                        @*<div class="form-group">
+                            <label class="text-bold">Select A Driver<span class="text-danger">*</span></label>
+                            <select id="driverDropdown" class="form-control" required name="DriverId">
+                                <option value="">Select a Driver</option>
+                            </select>
+                        </div>*@
+
+                        @*<div class="form-group">
+                            <label class="text-bold">Select Attendant <span class="text-danger">*</span></label>
+                            <select id="AttendentDropdown" class="form-control" required name="AttendentId">
+                                <option value="">Select an Attendant</option>
+                            </select>
+                        </div>*@
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label class="text-bold">Tractor Number<span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="tractorNumber" required name="TractorNumber" placeholder="Enter Tractor Number">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="text-bold">Tractor Driver<span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="tractorDriver" required name="TractorDriver" placeholder="Enter Tractor Driver">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label class="text-bold">Trailer Number<span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="trailerNumber" required name="TrailerNumber" placeholder="Enter Trailer Number">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="text-bold">Trailer Driver<span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="trailerDriver" required name="TrailerDriver" placeholder="Enter Trailer Driver">
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label class="text-bold">From<span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" required id="From" name="From" placeholder="Enter From Location">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="text-bold">Barn From<span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" required id="BarnFrom" name="BarnFrom" placeholder="Enter Barn From Location">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label class="text-bold">Phone From<span class="text-danger">*</span></label>
+                                    <input type="number" min="0" class="form-control" required id="PhoneFrom" name="PhoneFrom" placeholder="Enter Phone Number From">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="text-bold">Address From<span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" required id="AddressFrom" name="AddressFrom" placeholder="Enter Address From">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label class="text-bold">From City And State<span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" required id="FromCityAndState" name="FromCityAndState" placeholder="Enter From City and State">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="text-bold">Ship To<span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" required id="ShipTo" name="ShipTo" placeholder="Enter Ship To Location">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label class="text-bold">Barn To<span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" required id="BarnTo" name="BarnTo" placeholder="Enter Barn To Location">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="text-bold">Phone To<span class="text-danger">*</span></label>
+                                    <input type="number" min="0" class="form-control" required id="PhoneTo" name="PhoneTo" placeholder="Enter Phone Number To">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label class="text-bold">Address To<span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" required id="AddressTo" name="AddressTo" placeholder="Enter Address To">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="text-bold">To City And State<span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" required id="ToCityAndState" name="ToCityAndState" placeholder="Enter To City and State">
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="text-right">
+                            <button type="submit" id="subBtn" class="btn btn-primary">Update <i class="icon-database-insert position-right"></i></button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="row m-10">
+    <div class="panel panel-flat text-black custom-panel">
+        <div class="panel-heading" style="background: #E8ECED; padding:1px !important;">
+            <h2 class="text-center text-black">
+                Search
+            </h2>
+            <div class="heading-elements">
+                <ul class="icons-list">
+                    <li><a data-action="collapse" class="rotate-180"></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="panel-body pt-20 pb-20" style="display: none">
+            <div class="row">
+                <div class="col-md-4 col-lg-4" style="padding: 20px;padding-top:20px;">
+                    <div class="form-group">
+                        <label><strong>Date:</strong></label>
+                        <input type="text" class="form-control" id="searchDate" style="background-color:white" placeholder="Search by Date">
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-4" style="padding: 20px;padding-top:20px;">
+                    @*<div class="form-group">
+                        <label class="text-bold">Select A Driver<span class="text-danger">*</span></label>
+                        <select id="searchdriverDropdown"  class="form-control" required name="DriverId">
+                            <option value="">Select a Driver</option>
+                        </select>
+                    </div>*@
+                </div>
+                <div class="col-md-4 col-lg-4" style="padding: 20px;padding-top:20px;">
+                    @*<div class="form-group">
+                        <label class="text-bold">Select Attendant <span class="text-danger">*</span></label>
+                        <select id="searchAttendentDropdown" class="form-control" required name="AttendentId">
+                            <option value="">Select an Attendant</option>
+                        </select>
+                    </div>*@
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-3 col-sm-12 col-xs-12">
+                    <div class="form-group">
+                        <button onclick="clearSearch()" class="btn btn-danger btn-block">Reset</button><br>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-12 col-xs-12"></div>
+                <div class="col-md-3 col-sm-12 col-xs-12">
+                    <div class="form-group text-right">
+                        <button onclick="searchTable()" class="btn btn-success btn-block">Search</button><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="panel p-20 m-10">
+
+    <div class="row">
+
+        <center><u><h3>Transport Record List</h3></u></center>
+
+    </div>
+
+    <div class="row">
+        <div class="col-md-8"></div>
+        <div class="col-md-2 pull-right btn-block">
+            <a href="@Url.Action("AddTransporterRecord","Admin", new{Role = 2})" class="btn btn-primary m-5 pull-right">Add New</a>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table text-md-nowrap table-striped table-bordered text-center no-footer" id="userTable">
+            <thead class="bg-indigo-800">
+                <tr>
+                    <th class="text-bold" hidden>...</th>
+                    <th class="text-bold text-center" style="min-width:130px;">
+                        Date
+                    </th>
+                    <th class="text-bold text-center" style="min-width:130px;">
+                       Tractor Number
+                    </th>
+
+                    <th class="text-bold text-center" style="min-width:130px;">
+                        Tractor Driver
+                    </th>
+                    <th class="text-bold text-center" style="min-width:130px;">
+                        Trailer Number
+                    </th>
+                    <th class="text-bold text-center" style="min-width:130px;">
+                        Trailer Driver
+                    </th>
+                    <th class="text-bold text-center" style="min-width:130px;">
+                        Barn From
+                    </th>
+                    <th class="text-bold text-center" style="min-width:130px;">
+                        Barn To
+                    </th>
+                    <th class="text-bold text-center" style="min-width:130px">
+                        Action
+                    </th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+
+
+<script>
+    loadTable();
+
+    function loadTable(Role, Date) {
+        $('#userTable').DataTable(
+            {
+                "ajax":
+                {
+                    "url": '@Url.Action("GetTransporterRecordDataTable", "Ajax")',
+                    "type": "POST",
+                    "datatype": "json",
+                    "data":
+                    {
+                        date: Date,
+                    }
+                },
+                'columns':
+                    [
+                        { "data": "hidden", "name": "0" },
+                        { "data": "Date", "name": "Date" },
+                        //{ "data": "DriverId", "name": "DriverId" },
+                        //{ "data": "AttendentId", "name": "AttendentId" },
+                        { "data": "TractorNumber", "name": "TractorNumber" },
+                        { "data": "TractorDriver", "name": "TractorDriver" },
+                        { "data": "TrailerNumber", "name": "TrailerNumber" },
+                        { "data": "TrailerDriver", "name": "TrailerDriver" },
+                        { "data": "BarnFrom", "name": "BarnFrom" },
+                        { "data": "BarnTo", "name": "BarnTo" },
+                        { "data": "Action", "name": "0" },
+                    ],
+                'columnDefs':
+                    [
+                        {
+                            "targets": 0,
+                            "visible": false,
+                            "searchable": false,
+                            "render": function (data, type, full, meta) {
+                                console.log(full);
+                                return null;
+                            }
+                        },
+                        {
+                            "targets": 1,
+                            'className': '',
+                            "render": function (data, type, full, meta) {
+
+                                return full.date;
+
+                            }
+                        },
+                        {
+                            "targets": 2,
+                            'className': '',
+                            "render": function (data, type, full, meta) {
+                                return full.tractorNumber;
+
+                            }
+                        },
+                        {
+                            "targets": 3,
+                            'className': '',
+                            "render": function (data, type, full, meta) {
+                                return full.tractorDriver;
+
+                            }
+                        },
+                        {
+                            "targets": 4,
+                            'className': '',
+                            "render": function (data, type, full, meta) {
+
+                                return full.trailerNumber;
+
+                            }
+                        },
+                        {
+                            "targets": 5,
+                            'className': '',
+                            "render": function (data, type, full, meta) {
+                                return full.trailerDriver;
+                            }
+                        },
+
+                        {
+                            "targets": 6,
+                            'className': '',
+                            "render": function (data, type, full, meta) {
+                                return full.barnFrom;
+                            }
+                        },
+                        {
+                            "targets": 7,
+                            'className': '',
+                            "render": function (data, type, full, meta) {
+                                return full.barnTo;
+                            }
+                        },
+                        {
+                            "targets": 8,
+                            'className': '',
+                            'sortable': false,
+                            "render": function (data, type, full, meta) {
+                                return '<ul class="icons-list"> ' +
+                                    '<li class="dropdown" >' +
+                                    '			<a href="#" class="dropdown-toggle" data-toggle="dropdown">' +
+                                    '				<i class="icon-menu9"></i>' +
+                                    '			</a>' +
+                                    '			<ul class="dropdown-menu dropdown-menu-right"  style="padding-left:5px !important; min-width:152px !important;">' +
+                                    '				<li>' +
+                                    '                   <button class="btn btn-sm bg-info icon-pencil" onclick="updateFunction(\'' + full.id + '\')" title="Edit"></button>' +
+                                    '                   <button class="btn btn-sm bg-danger icon-bin"  onclick="deleteFunction(\'' + full.id + '\')" title="Delete"></button>' +
+                                    '                   <button class="btn btn-sm bg-primary fa fa-eye" style="height:35px"  onclick="ViewTransporterDetail(\'' + full.id + '\')" title="View Transport Detail"></button>' +
+                                    //'               <a style="padding-left: 38px;" href="/Admin/ViewTransporterDetail?way=' + full.id + '"  title="View Detail" class="btn btn-sm btn-primary">' +
+                                    //'               <i class="fa fa-eye text-center"></i>' +
+                                    //'              </a>' +
+                                    '               </li>' +
+                                    '			</ul>' +
+                                    '		</li >' +
+                                    '	</ul >';
+                            }
+                        },
+                    ],
+                "serverSide": "true",
+                "processing": "true",
+                "language":
+                {
+                    "processing": "<i class='icon-spinner spinner icon-2x'></i>",
+                    "search": "<span>Search :</span> _INPUT_",
+                    "searchPlaceholder": "Filter Data",
+                    "lengthMenu": "<span>Show :</span> _MENU_",
+                    "paginate": { 'first': 'First', 'last': 'Last', 'next': '&rarr;', 'previous': '&larr;' }
+                }
+            });
+    }
+
+    $(document).ready(function () {
+        // Hide the DataTable search filter
+        $('#userTable_filter').css('display', 'none');
+    });
+
+    function searchTable() {
+        var role = $('#searchRole').val();
+        var Date = $('#searchDate').val();
+
+        $('#userTable').DataTable().clear();
+        $('#userTable').DataTable().destroy();
+
+        loadTable(role, Date);
+    }
+
+    function clearSearch() {
+        $('#userTable').DataTable().clear();
+        $('#userTable').DataTable().destroy();
+
+
+        $("#searchRole").val("").change();
+        $('#searchDate').val("");
+
+        loadTable();
+    }
+
+
+    function updateFunction(id) {
+        $('#updEmailErrMsg').text("");
+        $('#updSubBtn').attr('disabled', false);
+
+        $("#loadImg").show();
+
+        $.ajax({
+            type: 'POST',
+            url: "../Ajax/GetTransporterRecordById",
+            dataType: "json",
+            data: {
+                id: id
+            },
+            success: function (response) {
+                debugger;
+                if (response == null) {
+                    alert("Record not found, Please reload the page.");
+                }
+
+                // Populate form fields with received data
+                $("#updId").val(response.id);
+                $("#Date").val(response.date);
+
+                $("#From").val(response.from);
+                $("#BarnFrom").val(response.barnFrom);
+                $("#PhoneFrom").val(response.phoneFrom);
+                $("#AddressFrom").val(response.addressFrom);
+                $("#FromCityAndState").val(response.fromCityAndState);
+                $("#ShipTo").val(response.shipTo);
+                $("#BarnTo").val(response.barnTo);
+                $("#PhoneTo").val(response.toPhoneNumber);
+                $("#AddressTo").val(response.addressTo);
+                $("#ToCityAndState").val(response.toCityAndState);
+                $("#tractorNumber").val(response.tractorNumber);
+                $("#tractorDriver").val(response.tractorDriver);
+                $("#trailerNumber").val(response.trailerNumber);
+                $("#trailerDriver").val(response.trailerDriver);
+                $("#driverId").val(response.driverId);
+
+
+                $("#loadImg").hide();
+                $("#updateModal").modal('show');
+                //loadDrivers(0);
+                //$("#DriverId").val(response.driverId);
+                //$("#AttendentId").val(response.attendentId);
+            },
+            error: function () {
+                $("#loadImg").hide();
+                alert("Ajax Failed");
+            }
+        });
+    }
+
+
+    function validateEmail(email) {
+        var id = $('#updId').val();
+        if (email != "" && id != "") {
+            $.ajax({
+                type: 'POST',
+                url: "../Ajax/ValidateEmail",
+                dataType: "json",
+                data: {
+                    email: email, id: id
+                },
+                success: function (response) {
+                    if (response == true) {
+                        $('#updEmailErrMsg').text("");
+                        $('#updSubBtn').attr('disabled', false);
+                    }
+                    else {
+                        $('#updEmailErrMsg').text("Duplicate Email");
+                        $('#updSubBtn').attr('disabled', true);
+                    }
+                },
+                error: function () {
+                    $('#updEmailErrMsg').text("");
+                    $('#updSubBtn').attr('disabled', false);
+
+                    alert("Ajax failed");
+                }
+            });
+        }
+
+    }
+
+
+    function deleteFunction(id) {
+        $('#confirmModalHeading').text('Warning!');
+        $('#confirmModalHeader').removeClass('bg-success');
+        $('#confirmModalHeader').addClass('bg-danger');
+        $('#confirmModalText').empty();
+        $('#confirmModalText').append('Do you really want to delete this record?<br />' +
+            'This record is going to permanently delete from your system.<br />' +
+            'The action cannot be undone.');
+
+        $("#confirmModalForm").attr("action", "../Admin/DeleteTransporterRecord?id=" + id);
+
+        $('#confirmModal').modal('show');
+    }
+
+</script>
+
+<script>
+    $("#toggle").change(function () {
+
+        // Check the checkbox state
+        if ($(this).is(':checked')) {
+            // Changing type attribute
+            $("#updPassword").attr("type", "text");
+
+            // Change the Text
+            $("#toggleText").text("Hide");
+        } else {
+            // Changing type attribute
+            $("#updPassword").attr("type", "password");
+
+            // Change the Text
+            $("#toggleText").text("Show");
+        }
+
+    });
+</script>
+
+
+@*<script>
+
+    const UpdateForm = document.getElementById('UpdateForm');
+    const uploadButton = document.getElementById('updSubBtn');
+    UpdateForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+        uploadButton.disabled = true;
+        UpdateForm.submit();
+
+    });
+</script>*@
+
+
+<script>
+    // Function to load driver data via Ajax
+    function loadAttendents(type) {
+        debugger;
+        $.ajax({
+            url: '@Url.Action("GetDriverUsers", "Ajax")',
+            type: 'POST',
+            dataType: 'json',
+            data: { role: 4 },
+            success: function (data) {
+                debugger;
+                if (type==0)
+                {
+
+                    var AttendentDropdown = $('#AttendentDropdown');
+                    AttendentDropdown.empty(); // Clear existing options
+                    AttendentDropdown.append($('<option>', {
+                        value: '',
+                        text: 'Select an Attendant'
+                    }));
+                    $.each(data, function (i, item) {
+                        AttendentDropdown.append($('<option>', {
+                            value: item.id,
+                            text: item.firstName + ' ' + item.lastName
+                        }));
+                    });
+
+                }
+                else
+                {
+
+                    var AttendentDropdown = $('#searchAttendentDropdown');
+                    AttendentDropdown.empty(); // Clear existing options
+                    AttendentDropdown.append($('<option>', {
+                        value: '',
+                        text: 'Select an Attendant'
+                    }));
+                    $.each(data, function (i, item) {
+                        AttendentDropdown.append($('<option>', {
+                            value: item.id,
+                            text: item.firstName + ' ' + item.lastName
+                        }));
+                    });
+
+                }
+                
+            },
+            error: function () {
+                console.error('Failed to load Attendents data.');
+            }
+        });
+    }
+
+    // Function to load driver data via Ajax
+    function loadDrivers(type) {
+        debugger;
+        $.ajax({
+            url: '@Url.Action("GetDriverUsers","Ajax")',
+            type: 'POST',
+            dataType: 'json',
+            data: { role: 2 },
+            success: function (data) {
+                debugger;
+                if(type==0)
+                {
+
+                    var driverDropdown = $('#driverDropdown');
+                    driverDropdown.empty(); // Clear existing options
+                    driverDropdown.append($('<option>', {
+                        value: '',
+                        text: 'Select a Driver'
+                    }));
+                    $.each(data, function (i, item) {
+                        driverDropdown.append($('<option>', {
+                            value: item.id,
+                            text: item.firstName + ' ' + item.lastName
+                        }));
+                    });
+
+                }
+                else
+                {
+                    var driverDropdown = $('#searchdriverDropdown');
+                    driverDropdown.empty(); // Clear existing options
+                    driverDropdown.append($('<option>', {
+                        value: '',
+                        text: 'Select a Driver'
+                    }));
+                    $.each(data, function (i, item) {
+                        driverDropdown.append($('<option>', {
+                            value: item.id,
+                            text: item.firstName + ' ' + item.lastName
+                        }));
+                    });
+                }
+                
+
+                // Call the loadAttendents function after loading drivers
+                loadAttendents(type);
+            },
+            error: function () {
+                console.error('Failed to load driver data.');
+            }
+        });
+    }
+
+</script>
+<script>
+    function ViewTransporterDetail(id)
+    {
+        debugger;
+        window.location.href = "/Admin/ViewTransporterDetail?way=" + id;
+    }
+</script>

@@ -1,0 +1,392 @@
+﻿@using Transportation.Models
+@model GeneratePdfRecordViewModel
+
+
+@{
+    ViewData["Title"] = "GeneratePdfCopy";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+    var basicCharges = 0;
+    var chargesForExcessValue = 0;
+}
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" type="image/x-icon" href="~/assets/images/Favicons/C-Fav.jpg">
+
+    <!-- Global stylesheets -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
+    <link href="~/assets/css/icons/icomoon/styles.css" rel="stylesheet" type="text/css">
+    <link href="~/assets/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="~/assets/css/core.css" rel="stylesheet" type="text/css">
+    <link href="~/assets/css/components.css" rel="stylesheet" type="text/css">
+    <link href="~/assets/css/colors.css" rel="stylesheet" type="text/css">
+
+    <link href="~/assets/css/icons/fontawesome/styles.min.css" rel="stylesheet" type="text/css">
+    <link href="~/assets/css/icons/fontawesome/fonts/fontawesome-webfont.svg" rel="stylesheet" type="text/css">
+
+
+
+</head>
+
+<style>
+    /* Apply borders to all sides of table cells */
+    .table td {
+        border: 1px solid #000;
+        padding: 5px;
+    }
+
+    .table thead th {
+        border: 1px solid #000;
+        padding: 5px;
+        border-top: 1px solid #000 !important;
+        font-weight: bold;
+    }
+</style>
+<style>
+    .custom-border {
+        border: 3px solid red !important;
+    }
+
+    .custom-border-rigth {
+        border-right: 3px solid red !important;
+        height: 259px !important;
+    }
+</style>
+
+
+<div class="content mt-15" style="font-size:100%">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-flat custom-panel">
+                <div class="panel-heading">
+                    <h4 class="panel-title text-center text-bold">BOB HUBBARD HORSE TRANSPORTATION, INC.</h4>
+                </div>
+
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-2">
+                        </div>
+                        <div class="col-md-7">
+                            <p class="text-center">
+                                <b>
+                                    MC 149564 AND SUB 1F<br />
+                                    3730 S. Riverside Ave., Colton, CA 92324<br />
+                                    MAIN OFFICE 800-472-7786 ∙ VERSAILLES, KY 800-888-5914 ∙ AUBURN, WA 800-317-6768 ∙ OCALA, FL 800-398-0001
+                                </b>
+                            </p>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="text-bold">Date</label>
+                                <input type="text" class="form-control" required name="Date" value="@Model.Date" readonly>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-3">
+                            <h3>
+                                <b>
+                                    NON NEGOTIABLE
+                                    BILL OF LADING
+                                </b>
+                            </h3>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="text-bold">Tractor#</label>
+                                <input type="text" class="form-control" required name="Date" value="@Model.TractorNumber" readonly>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="text-bold">Tractor Driver</label>
+                                <input type="text" class="form-control" required name="Date" value="@Model.TractorDriver" readonly>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="text-bold">Trailer#</label>
+                                <input type="text" class="form-control" required name="Date" value="@Model.TrailerNumber" readonly>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="text-bold">Trailer Driver</label>
+                                <input type="text" class="form-control" required name="Date" value="@Model.TrailerDriver" readonly>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="text-bold">From</label>
+                                <input type="text" class="form-control" required name="Date" value="@Model.From" readonly>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="text-bold">Barn#</label>
+                                <input type="text" class="form-control" required name="Date" value="@Model.BarnFrom" readonly>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="text-bold">Phone</label>
+                                <input type="text" class="form-control" required name="Date" value="@Model.PhoneFrom" readonly>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="text-bold">Address</label>
+                                <input type="text" class="form-control" required name="Date" value="@Model.AddressFrom" readonly>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="text-bold">City And State</label>
+                                <input type="text" class="form-control" required name="Date" value="@Model.FromCityAndState" readonly>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p text-justify style="font-size: 9px;">
+                                This
+                                Shipment is subject to the provisions of this bill of lading (including the provisions on the reverse side hereof) and the Carrier’s Terms and Conditions of Shipment in effect on the date of this Shipment’s origin. The Carrier
+                                agrees to transport to destination indicated the property described below if within the scope of Carrier’s lawful operation. The property described below is in apparent good condition (except as otherwise noted). It is mutually
+                                agreed as to the parties hereto, all Beneficial Owners of the property identified herein and all Carrier’s handling this Shipment or any part thereof, every service to be performed hereunder shall be subject to all conditions not
+                                prohibited by law whether printed or written, contained in Carrier’s Terms and Conditions of Shipment and this bill of lading and shall apply to any return of the Shipment or any reconsignment by the Shipper, Carrier, or Connecting
+                                Carrier.
+                                The Carrier’s Established Rate per animal applies only when the shipment has an Agreed Value not exceeding $5,000 per animal. When an Agreed Value in excess of $5,000 is declared on any animal, there will be added to the
+                                Established Rate a charge of $1.00 for each $100 or fraction thereof of such excess valuation for each 100 miles or fraction thereof of distance between points of origin and destination (subject to a minimum excess charge of
+                                $100 per animal.)
+                                THE AGREED VALUE OF THE PROPERTY IS HEREBY SPECIFICALLY STATED BY THE SHIPPER INDIVIDUALLY OR BY SHIPPER’S AGENT SIGNING ON SHIPPER’S BEHALF NOT TO EXCEED
+                                $5,000 PER ANIMAL UNLESS SPECIFIED OTHERWISE HEREIN.
+                                Shipper is encouraged to obtain it’s own insurance, it being acknowledged and understood animals transported may
+                                have an actual value in excess of the Agreed Value. Carrier does not provide insurance for Shipper’s goods. Carrier assumes the liability of a common carrier subject to to the provisions of 49 U.S.C. 14706.
+                                <span class="text-danger">
+                                    El acuerdo de el valor de la propiedad es por este medio que el embarcador o el agente del embarcador firmando en su nombre declara especificamente el
+                                    valor de este no excediendo $5,000 por animal. A no ser que se especifique de orta manera en el documento.
+                                </span>
+                                Shipper is encouraged to obtain it’s own insurance, it being acknowledged and understood animals transported may
+                                have an actual value in excess of the Agreed Value. Carrier does not provide insurance for Shipper’s goods. Carrier assumes the liability of a common carrier subject to to the provisions of 49 U.S.C. 14706.
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="text-bold">Ship To</label>
+                                <input type="text" class="form-control" required name="Date" value="@Model.ShipTo" readonly>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="text-bold">Barn#</label>
+                                <input type="text" class="form-control" required name="Date" value="@Model.BarnTo" readonly>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="text-bold">Phone</label>
+                                <input type="text" class="form-control" required name="Date" value="@Model.ToPhoneNumber" readonly>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="text-bold">Address</label>
+                                <input type="text" class="form-control" required name="Date" value="@Model.AddressTo" readonly>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="text-bold">City And State</label>
+                                <input type="text" class="form-control" required name="Date" value="@Model.ToCityAndState" readonly>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th style="width:30%">BILL TO: NAME AND ADDRESS</th>
+                                        <th style="width:35%">
+                                            NAME, NUMBER, DESCRIPTION
+                                            KIND OF ANIMALS.
+                                            PARAPHERNALIA, PETS, MASCOTS, ETC.
+                                        </th>
+                                        <th>
+                                            Maximum Agreed VALUE OF EACH ANIMAL
+
+                                        </th>
+                                        <th>
+                                            CHARGES FOR EXCESS VALUE
+
+                                        </th>
+                                        <th>
+                                            BASIC CHARGE
+                                            PER ANIMAL
+                                        </th>
+
+                                    </tr>
+                                </thead>
+                                <tbody style="background-color:#f6faff">
+                                    <!-- Rows -->
+                                    @foreach (var item in Model.billToRecords)
+                                    {
+                                        <tr>
+                                            <td>@item.Name, @item.Address</td>
+                                            <td>@item.Description</td>
+                                            <td>@item.AgreedValue</td>
+                                            <td>@item.ChargeValue</td>
+                                            <td>@item.ChargePerAnimal</td>
+
+                                        </tr>
+
+                                        basicCharges += @item.ChargePerAnimal.Value;
+                                        chargesForExcessValue += @item.ChargeValue.Value;
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="row custom-border">
+                        <div class="col-md-5 ">
+                            <div class="form-group">
+                                <label class="text-bold" style="display: inline-block;">By:</label>
+                                <input type="text" class="form-control" required name="By" value="@Model.By" placeholder="N/A" readonly style="display: inline-block; width: calc(100% - 60px);"><br />
+
+                                <label class="text-bold" style="display: inline-block;">Date:</label>
+                                <input type="text" class="form-control" style="display: inline-block; width: calc(100% - 70px);" required name="ReceivingDate" value="@Model.ReceivingDate" placeholder="N/A" readonly><br />
+
+                                <p>If COLORS, REGISTRATION or TACK sent with horses receiver must acknowledge receipt.</p><br />
+
+                                <label class="text-bold" style="display: inline-block;">Received By:</label>
+                                <input type="text" class="form-control" style="display: inline-block; width: calc(100% - 120px);" required name="ReceivedBy" value="@Model.ReceivedBy" placeholder="N/A" readonly>
+                            </div>
+                        </div>
+                        <div class="col-md-3 ">
+                            <div class="form-group">
+                                <label class="text-bold" style="display: inline-block;">Payment Type</label>
+                                <input type="text" class="form-control" name="PaymentType" value="@Model.PaymentType" readonly style="display: inline-block; width: 55%;"><br />
+
+                                <label class="text-bold" style="display: inline-block;">Payment$</label>
+                                <input type="text" class="form-control" style="display: inline-block; width:67%;" name="Payment" value="@Model.Payment" readonly><br />
+
+                                <label class="text-bold" style="display: inline-block;">Date</label>
+                                <input type="text" class="form-control" style="display: inline-block; width: 83%;" name="PaymentDate" value="@Model.PaymentDate" readonly><br />
+
+                                <label class="text-bold" style="display: inline-block;">By</label>
+                                <input type="text" class="form-control" style="display: inline-block; width:90%;" name="PaymentBy" value="@Model.PaymentBy" readonly><br />
+
+                                <label class="text-bold" style="display: inline-block;">Check#</label>
+                                <input type="text" class="form-control" style="display: inline-block; width: 75%;" name="Check" value="@Model.Check" readonly>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <div class="input-row">
+                                    <label class="text-bold" style="display: inline-block; width: 160px;">Basic Charges</label>
+                                    <input type="text" class="form-control" name="BasicCharges" value="@Model.BasicCharges" readonly style="display: inline-block; width: 115px;">
+                                </div>
+                                <div class="input-row">
+                                    <label class="text-bold" style="display: inline-block; width: 160px;">Charges For Excess Value</label>
+                                    <input type="text" class="form-control" name="ChargesForExcessValue" value="@Model.ChargesForExcessValue" readonly style="display: inline-block; width: 115px;">
+                                </div>
+                                <div class="input-row">
+                                    <label class="text-bold" style="display: inline-block; width: 160px;">Lay Overs</label>
+                                    <input type="text" class="form-control" name="Layovers" value="@Model.Layovers" readonly style="display: inline-block; width: 115px;">
+                                </div>
+                                <div class="input-row">
+                                    <label class="text-bold" style="display: inline-block; width: 160px;">Vet Fees</label>
+                                    <input type="text" class="form-control" name="VetFees" value="@Model.VetFees" readonly style="display: inline-block; width: 115px;">
+                                </div>
+                                <div class="input-row">
+                                    <label class="text-bold" style="display: inline-block; width: 160px;">Other</label>
+                                    <input type="text" class="form-control" name="Other" value="@Model.Other" readonly style="display: inline-block; width: 115px;">
+                                </div>
+                                <div class="input-row">
+                                    <label class="text-bold" style="display: inline-block; width: 160px;">Total Charges</label>
+                                    <input type="text" class="form-control" name="TotalCharges" value="@Model.TotalCharges" readonly style="display: inline-block; width: 115px;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h5 class="text-center">
+                                <b>
+                                    CONTRACT TERMS AND CONDITIONS
+                                </b>
+                            </h5><br />
+                            <p class="text-justify" style="font-size:9px">
+                                <b>SECTION 1:</b>
+                                The Carrier’s Established Rate does not include the loading, unloading, handling, feeding, watering and other care of animal(s). Shipments of animal(s) may be
+                                accompanied by one or more attendants provided by Shipper and it shall be the duty and the responsibility of such attendants to care for, load and unload the animal(s). The Carrier
+                                shall be responsible only for the actual transportation of the animal(s). The Carrier, its employees and agents are not liable for injuries or death occurring to animal(s) while said
+                                employees or agents assist in the loading or unloading of said animal(s). Shipper and/or individual receiving said animal(s) shall indemnify the Carrier and its agents for damages to
+                                equipment and for injury or death to animal(s) resulting from negligence or willful misconduct on the part of the Shipper, the individual receiving such animal(s) or their agents.
+                                <span class="text-danger">
+                                    Agente/Dueno y/o el individuo que recibe el(los) animal(es) mencionado(s) anteriomente, debera reembolsar a el transportista y sus agentes por danos a equipo y por heridas o
+                                    muerte del(los) animal(es) como resultado de la negligencia o conducta inapropiada de parte de el Agente/Dueno remitente, el individuo que recibe dicho(s) animal(es) o sus agentes.
+                                </span>
+                                Furthermore, if Carrier’s agents or employees at the request of a Shipper or the one receiving said animal(s) assist in the loading or unloading of animal(s), said Shipper and/or the
+                                individual receiving said animal(s) shall indemnify the Carrier for damages to equipment and injuries or death to the animal(s) of said Shipper and/or receiver requesting unloading or
+                                loading assistance and also to the animal(s) of any other Shipper or receiver occurring in connection therewith.
+                                <b>SECTION 2:</b>
+                                Shipper agrees Carrier shall not be responsible for the conduct or acts of the animal(s) to themselves or to each other such as biting, kicking, goring, or smothering, nor for
+                                loss or damage arising from the condition of the animal(s) themselves, or which results from their nature or propensities, which risks are assumed by Shipper. Shipper hereby releases
+                                and discharges Carrier from all liability from any cause whatsoever, unless such delay, injuries, or loss shall be caused by Carrier or by the negligence of its agents or employees, and in
+                                such event, Carrier shall be liable only to the extent of actual damage sustained but, in no event, an amount greater than the Agreed Value stated herein for the animal(s) in question.
+                                IF THE SHIPPER INDIVIDUALLY OR THROUGH SHIPPER’S AGENT FAILS TO DECLARE A VALUE AT THE TIME OF SHIPMENT, THE MAXIMUM LIABILITY IS $5,000 PER ANIMAL
+                                <span class="text-danger">SI EL EMBARCADOR O EL AGENTE DE EL VALOR AL TIEMPO DE LA EMBARCADA, EL MAXIMO QUE CUBRIRIA ES $5,000 POR ANIMAL.</span>
+                                <b>SECTION 3:</b>
+
+                                A copy of Carrier’s Terms and Conditions of Shipment, a document separate from this bill of lading’s Contract Terms and Conditions, may be obtained from Carrier’s
+                                address identified above. SHIPPER ACKNOWLEDGES IT HAS OBTAINED AND READ A COPY OF CARRIER’S TERMS AND CONDITIONS OF SHIPMENT OR THAT IT HAS BEEN
+                                OFFERED AND HAS DECLINED THE OPPORTUNITY TO DO SO, BUT IN ANY EVENT SHIPPER ACCEPTS AND AGREES TO BE BOUND BY THE PROVISIONS OF SAID
+                                TERMS AND CONDITIONS OF SHIPMENT.
+                            </p><br />
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+

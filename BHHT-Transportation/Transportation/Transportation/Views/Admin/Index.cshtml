@@ -1,0 +1,61 @@
+﻿@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="row text-center justify-content-center  m-10">
+    <div class="col-md-12">
+        @if (ViewBag.userRole==1)
+        {
+            <h1 class="text-bold text-highlight"><u>Admin Dashboard</u></h1>
+
+        }
+        else if (ViewBag.userRole == 0)
+        {
+            <h1 class="text-bold text-highlight"><u>Super Admin Dashboard</u></h1>
+        }
+    </div>
+    <div class="col-md-2"></div>
+    <div class="col-md-4">
+        <div class="text-center text-white m-10" style="padding: 25px; background: #196f9c; box-shadow: 5px 5px 10px #888888; ">
+            <h3 class="text-semibold">Total Drivers</h3>
+            <h2 class="text-bold">@ViewBag.Drivers</h2>
+        </div>
+    </div>   
+    <div class="col-md-4 ">
+        <div class="text-center text-white m-10" style="padding: 25px; background: #196f9c; box-shadow: 5px 5px 10px #888888; ">
+            <h3 class="text-semibold">Total Receivers</h3>
+            <h2 class="text-bold">@ViewBag.Receivers</h2>
+        </div>
+    </div>
+    <div class="col-md-2"></div>
+
+    
+
+</div>
+
+<div class="row text-center justify-content-center  m-10">
+    <div class="col-md-4"></div>
+
+<div class="col-md-4">
+    <div class="text-center text-white m-20" style="padding: 25px; background: #196f9c; box-shadow: 5px 5px 10px #888888; ">
+            <h3 class="text-semibold">Total Attendant</h3>
+        <h2 class="text-bold">@ViewBag.Attendentants</h2>
+    </div>
+</div>
+@*<div class="col-md-4">
+    <div class="text-center text-white m-20" style="padding: 25px; background: #196f9c; box-shadow: 5px 5px 10px #888888; ">
+            <h3 class="text-semibold">Total Shipper</h3>
+        <h2 class="text-bold">@ViewBag.Shipers</h2>
+    </div>
+</div>*@
+    <div class="col-md-4"></div>
+
+</div>
+<script>
+    //Used to handle Sidebar links Activeness
+    $('#adminIndex').addClass('active');
+
+</script>

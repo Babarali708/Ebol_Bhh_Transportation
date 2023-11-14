@@ -1,0 +1,430 @@
+﻿@using Transportation.Models
+@model GeneratePdfRecordViewModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>eBol</title>
+</head>
+<body style="padding: 20px 60px;">
+    <p style="margin-bottom:-14px">1</p>
+    <center>
+        <h2 style="font-size: 2.2em;margin-top:0px;"><b>BOB HUBBARD HORSE TRANSPORTATION, INC.</b></h2>
+    </center>
+
+    <div style="position: absolute; top: 100px; left: 109px;">
+        <b style="color: red;">
+            NOTE: ORIGINAL MUST <br>
+            BE  SIGNED  ON  FRONT <br>
+            AND BACK
+        </b>
+    </div>
+
+    <div style="position: absolute; left: 475px; top: 100px; width: 40px; height: 40px; border-radius: 100%; background-color: black;"></div>
+
+    <div style="position: absolute; top: 110px; left: 288px;">
+        <center>
+            MC 149564 AND SUB 1F
+            <br>
+            3730 S. Riverside Ave., Colton, CA 92324
+            <br>
+            MAIN OFFICE 800-472-7786 ∙ VERSAILLES, KY 800-888-5914 ∙ AUBURN, WA 800-317-6768 ∙ OCALA, FL 800-398-0001
+        </center>
+    </div>
+
+    <div style="position: absolute; left:1000px; top: 100px; width: 40px; height: 40px; border-radius: 100%; background-color: black;"></div>
+
+    <div style="position: absolute; left:1160px; top: 90px;">
+        <div>
+            <div style="position: relative; left:33px;">
+                #<input type="text" value="@Model.No" readonly style="width: 134px; height: 24px; border: none; background-color: rgb(161, 221, 229);" />
+            </div>
+            <br>
+            <div style="margin-left:-39px">
+                DATE <input type="text" value="@Model.Date" readonly style="width: 134px; height: 24px; border: none; border-bottom: 1px solid black; background-color: rgb(161, 221, 229);" />
+            </div>
+
+        </div>
+    </div>
+
+    <section style="position: relative; top: 40px; left: 42px;margin-top:13px">
+        <div>
+            <b>
+                NON NEGOTIABLE
+                <br>
+                BILL OF LADING
+            </b>
+        </div>
+
+        <div style="position: absolute; top: 12px; left: 210px;margin-top:10px;">
+            <div>
+                TRACTOR #<input type="text" value="@Model.TractorNumber" readonly style="width: 240px; height: 24px; border: none; border-bottom: 1px solid black; background-color: rgb(161, 221, 229);" />
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                DRIVERS <input type="text" value="@Model.TractorDriver" readonly style="width:555px; height: 24px; border: none; border-bottom: 1px solid black; background-color: rgb(161, 221, 229);" />
+
+            </div>
+
+        </div>
+        <div style="position: absolute; top: 48px; left: 210px; margin-top:13px;">
+            <div>
+                TRAILER # &nbsp;<input type="text" value="@Model.TrailerNumber" readonly style="width: 240px; height: 24px; border: none; border-bottom: 1px solid black; background-color: rgb(161, 221, 229);" />
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                DRIVERS <input type="text" value="@Model.TrailerDriver" readonly style="width: 555px; height: 24px; border: none; border-bottom: 1px solid black; background-color: rgb(161, 221, 229);" />
+
+            </div>
+
+        </div>
+
+        <!--From Part-->
+
+        <div style="margin-top:72px">
+            <div>
+                FROM<input type="text" value="@Model.From" readonly style="width: 325px; margin-left: 3px; height: 24px; border: none; border-bottom: 1px solid black; background-color: rgb(161, 221, 229);" />
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                BARN# <input type="text" value="@Model.BarnFrom" readonly style="width: 325px; height: 24px; border: none; border-bottom: 1px solid black; background-color: rgb(161, 221, 229);" />
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                PHONE<input value="@Model.PhoneFrom" type="text" readonly style="width: 325px; margin-left: 3px; height: 24px; border: none; border-bottom: 1px solid black; background-color: rgb(161, 221, 229);" />
+
+            </div>
+
+        </div>
+        <div style="margin-top:20px">
+            <div>
+                ADDRESS # &nbsp;<input type="text" value="@Model.AddressFrom" readonly style="width: 471px; height: 24px; border: none; border-bottom: 1px solid black; background-color: rgb(161, 221, 229);" />
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                CITY AND STATE <input type="text" readonly value="@Model.FromCityAndState" style="width: 471px; height: 24px; border: none; border-bottom: 1px solid black; background-color: rgb(161, 221, 229);" />
+
+            </div>
+
+        </div>
+        <div>
+            <p style="font-size: 14px;text-align: justify">
+                This
+                Shipment is subject to the provisions of this bill of lading (including the provisions on the reverse side hereof) and the Carrier’s Terms and Conditions of Shipment in effect on the date of this Shipment’s origin. The Carrier
+                agrees to transport to destination indicated the property described below if within the scope of Carrier’s lawful operation. The property described below is in apparent good condition (except as otherwise noted). It is mutually
+                agreed as to the parties hereto, all Beneficial Owners of the property identified herein and all Carrier’s handling this Shipment or any part thereof, every service to be performed hereunder shall be subject to all conditions not
+                prohibited by law whether printed or written, contained in Carrier’s Terms and Conditions of Shipment and this bill of lading and shall apply to any return of the Shipment or any reconsignment by the Shipper, Carrier, or Connecting
+                Carrier.
+                The Carrier’s Established Rate per animal applies only when the shipment has an Agreed Value not exceeding $5,000 per animal. When an Agreed Value in excess of $5,000 is declared on any animal, there will be added to the
+                Established Rate a charge of $1.00 for each $100 or fraction thereof of such excess valuation for each 100 miles or fraction thereof of distance between points of origin and destination (subject to a minimum excess charge of
+                $100 per animal.)
+                THE AGREED VALUE OF THE PROPERTY IS HEREBY SPECIFICALLY STATED BY THE SHIPPER INDIVIDUALLY OR BY SHIPPER’S AGENT SIGNING ON SHIPPER’S BEHALF NOT TO EXCEED
+                $5,000 PER ANIMAL UNLESS SPECIFIED OTHERWISE HEREIN.
+                Shipper is encouraged to obtain it’s own insurance, it being acknowledged and understood animals transported may
+                have an actual value in excess of the Agreed Value. Carrier does not provide insurance for Shipper’s goods. Carrier assumes the liability of a common carrier subject to to the provisions of 49 U.S.C. 14706.
+                <span style="color:red">
+                    El acuerdo de el valor de la propiedad es por este medio que el embarcador o el agente del embarcador firmando en su nombre declara especificamente el
+                    valor de este no excediendo $5,000 por animal. A no ser que se especifique de orta manera en el documento.
+                </span>
+                Shipper is encouraged to obtain it’s own insurance, it being acknowledged and understood animals transported may
+                have an actual value in excess of the Agreed Value. Carrier does not provide insurance for Shipper’s goods. Carrier assumes the liability of a common carrier subject to to the provisions of 49 U.S.C. 14706.
+            </p>
+        </div>
+        <div style="margin-top:62px">
+            <div>
+                SHIP TO#<input type="text" value="@Model.ShipTo" readonly style="width: 317px; margin-left: 3px; height: 24px; border: none; border-bottom: 1px solid black; background-color: rgb(161, 221, 229);" />
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                BARN# <input type="text" value="@Model.BarnTo" readonly style="width: 317px; height: 24px; border: none; border-bottom: 1px solid black; background-color: rgb(161, 221, 229);" />
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                PHONE<input type="text" value="@Model.ToPhoneNumber" readonly style="width: 317px; margin-left: 3px; height: 24px; border: none; border-bottom: 1px solid black; background-color: rgb(161, 221, 229);" />
+
+            </div>
+
+        </div>
+        <div style="margin-top:20px">
+            <div>
+                ADDRESS # &nbsp;<input type="text" value="@Model.AddressTo" readonly style="width: 471px; height: 24px; border: none; border-bottom: 1px solid black; background-color: rgb(161, 221, 229);" />
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                CITY AND STATE <input type="text" value="@Model.ToCityAndState" readonly style="width: 471px; height: 24px; border: none; border-bottom: 1px solid black; background-color: rgb(161, 221, 229);" />
+
+            </div>
+
+        </div>
+        
+       
+        <div style="margin-top: 20px;width: 1198px;">
+            <table  style="border-collapse:collapse!important;display: table!important; box-sizing:border-box!important;text-indent:initial!important;border-spacing:2px!important;border-color:black!important">
+                <thead style="border-collapse: collapse;">
+                    <tr style="font-size: 10px;margin: 0; padding: 0;">
+                        <th style="width:27%; border: 2px solid black;">BILL TO: NAME AND ADDRESS</th>
+                        <th style="width:32%; border: 2px solid black;">
+                            NAME, NUMBER, DESCRIPTION
+                            KIND OF ANIMALS.
+                            PARAPHERNALIA, PETS, MASCOTS, ETC.
+                        </th>
+                        <th style="border: 2px solid black;width:14%;">Maximum Agreed VALUE OF EACH ANIMAL</th>
+                        <th style="border: 2px solid black; width: 14%;">CHARGES FOR EXCESS VALUE</th>
+                        <th style="border: 2px solid black; width: 14%;">BASIC CHARGE PER ANIMAL</th>
+                    </tr>
+                </thead>
+
+                <tbody  style="background-color: rgb(161, 221, 229);">
+                    <!-- Rows -->
+                    @foreach (var item in Model.billToRecords)
+                    {
+                        <tr style="text-align:center;border:1px solid;">
+                            <td>@item.Name, @item.Address</td>
+                            <td>@item.Description</td>
+                            <td>@item.AgreedValue</td>
+                            <td>@item.ChargeValue</td>
+                            <td>@item.ChargePerAnimal</td>
+
+                        </tr>
+
+                    }
+                </tbody>
+
+            </table>
+
+        </div>
+        <div style="width: 1192px;border: 3px solid red;">
+            <div style="width:36%;border-right:3px solid red;padding-top:1px;display:inline-block;padding-left:3px">
+                <h3 style="color:red;text-align:center;font-size:16px;">RECEIVED IN APPARENT GOOD ORDER</h3>
+                By #<input type="text" value="@Model.By" readonly style="width: 384px; height: 24px; border: none; border-bottom: 1px solid black; background-color: rgb(161, 221, 229);" />
+                <br />
+                Date <input type="text" value="@Model.ReceivingDate" readonly style="width: 382px; height: 24px; margin-top: 8px; border: none; border-bottom: 1px solid black; background-color: rgb(161, 221, 229);" />
+
+
+                <p>
+                    If COLORS, REGISTRATION or TACK sent with horses receiver must
+                    acknowledge receipt.
+                </p><br />
+                Received By <input type="text" value="@Model.ReceivedBy" readonly style="width:330px; margin-bottom:7px; height: 24px; border: none; border-bottom: 1px solid black; background-color: rgb(161, 221, 229);" />
+            </div>
+
+
+            <div style="width: 18%; border-right: 3px solid red;height:230px;position:absolute;display:inline-block">
+
+                Payment Type $<input value="@Model.PaymentType" type="text" readonly style="width: 107px;margin-top:10px; height: 24px; border: none; border-bottom: 1px solid black; background-color: rgb(161, 221, 229);" />
+
+                <br />
+                payment $<input type="text" value="@Model.Payment" readonly style="width: 144px; margin-top: 5px; height: 24px; border: none; border-bottom: 1px solid black; background-color: rgb(161, 221, 229);" />
+                <br />
+                date <input type="text" value="@Model.PaymentDate" readonly style="width:179px; height: 24px;margin-top:5px; border: none; border-bottom: 1px solid black; background-color: rgb(161, 221, 229);" />
+                <br />
+                by #<input type="text" readonly value="@Model.PaymentBy" style="width: 182px; height: 24px; margin-top: 5px; border: none; border-bottom: 1px solid black; background-color: rgb(161, 221, 229);" />
+                <br />
+                check <input type="text" readonly value="@Model.Check" style="width: 169px; margin-top: 5px; margin-bottom: 7px; height: 24px; border: none; border-bottom: 1px solid black; background-color: rgb(161, 221, 229);" />
+            </div>
+
+            <div style="width: 21%; left: 664px; border-right: 3px solid black; height: 230px; position: absolute; display: inline-block;">
+                <div style="margin-top:10px">BASIC CHARGES $</div>
+                <hr style="margin-top: 5px; margin-bottom: 5px;">
+
+                <div>CHARGES FOR EXCESS VALUE</div>
+                <hr style="margin-top: 5px; margin-bottom: 5px;">
+
+                <div>LAYOVERS #</div>
+                <hr style="margin-top: 5px; margin-bottom: 5px;">
+
+                <div>VET FEE</div>
+                <hr style="margin-top: 5px; margin-bottom: 5px;">
+
+                <div>OTHER</div>
+                <hr style="margin-top: 5px; margin-bottom: 5px;">
+
+                <div style="margin-top:32px"><b>TOTAL CHARGES</b></div>
+
+            </div>
+
+
+            <div style="width: 21%;left:664px;height:230px;position:absolute;display:inline-block;left:922px">
+                <input type="text" value="@Model.BasicCharges" readonly style="width: 268px;margin-top:11px; height: 21px; border: none; border-bottom: 1px solid black; background-color: rgb(161, 221, 229);" />
+                <br />
+                <input type="text" value="@Model.ChargesForExcessValue" readonly style="width: 268px;  height: 21px; margin-top: 5px; border: none; border-bottom: 1px solid black; background-color: rgb(161, 221, 229);" />
+                <br />
+                <input type="text" readonly value="@Model.Layovers" style="width: 268px; height: 21px; margin-top: 5px; border: none; border-bottom: 1px solid black; background-color: rgb(161, 221, 229);" />
+                <br />
+                <input type="text" value="@Model.VetFees" readonly style="width: 268px; margin-top: 5px; margin-bottom: 7px; height: 21px; border: none; border-bottom: 1px solid black; background-color: rgb(161, 221, 229);" />
+                <br />
+                <input type="text" value="@Model.Other" readonly style="width: 268px; margin-top: 5px; margin-bottom: 7px; height: 21px; border: none; border-bottom: 1px solid black; background-color: rgb(161, 221, 229);" />
+                <br />
+                <input type="text" value="@Model.TotalCharges" readonly style="width: 268px; margin-top: 5px; margin-bottom: 7px; height: 47px; border: none; border-bottom: 1px solid black; background-color: rgb(161, 221, 229);" />
+            </div>
+        </div>
+        <div style="width: 1192px;margin-top:20px">
+            <h5 style="text-align:center">
+                <b>
+                    CONTRACT TERMS AND CONDITIONS
+                </b>
+            </h5><br />
+            <p style="font-size:20px;margin-top:-10px">
+                <b>SECTION 1:</b>
+                The Carrier’s Established Rate does not include the loading, unloading, handling, feeding, watering and other care of animal(s). Shipments of animal(s) may be
+                accompanied by one or more attendants provided by Shipper and it shall be the duty and the responsibility of such attendants to care for, load and unload the animal(s). The Carrier
+                shall be responsible only for the actual transportation of the animal(s). The Carrier, its employees and agents are not liable for injuries or death occurring to animal(s) while said
+                employees or agents assist in the loading or unloading of said animal(s). Shipper and/or individual receiving said animal(s) shall indemnify the Carrier and its agents for damages to
+                equipment and for injury or death to animal(s) resulting from negligence or willful misconduct on the part of the Shipper, the individual receiving such animal(s) or their agents.
+                <span style="color:red">
+                    Agente/Dueno y/o el individuo que recibe el(los) animal(es) mencionado(s) anteriomente, debera reembolsar a el transportista y sus agentes por danos a equipo y por heridas o
+                    muerte del(los) animal(es) como resultado de la negligencia o conducta inapropiada de parte de el Agente/Dueno remitente, el individuo que recibe dicho(s) animal(es) o sus agentes.
+                </span>
+                Furthermore, if Carrier’s agents or employees at the request of a Shipper or the one receiving said animal(s) assist in the loading or unloading of animal(s), said Shipper and/or the
+                individual receiving said animal(s) shall indemnify the Carrier for damages to equipment and injuries or death to the animal(s) of said Shipper and/or receiver requesting unloading or
+                loading assistance and also to the animal(s) of any other Shipper or receiver occurring in connection therewith.<br />
+                <b>SECTION 2:</b>
+                Shipper agrees Carrier shall not be responsible for the conduct or acts of the animal(s) to themselves or to each other such as biting, kicking, goring, or smothering, nor for
+                loss or damage arising from the condition of the animal(s) themselves, or which results from their nature or propensities, which risks are assumed by Shipper. Shipper hereby releases
+                and discharges Carrier from all liability from any cause whatsoever, unless such delay, injuries, or loss shall be caused by Carrier or by the negligence of its agents or employees, and in
+                such event, Carrier shall be liable only to the extent of actual damage sustained but, in no event, an amount greater than the Agreed Value stated herein for the animal(s) in question.
+                IF THE SHIPPER INDIVIDUALLY OR THROUGH SHIPPER’S AGENT FAILS TO DECLARE A VALUE AT THE TIME OF SHIPMENT, THE MAXIMUM LIABILITY IS $5,000 PER ANIMAL
+                <span style="color:red;">SI EL EMBARCADOR O EL AGENTE DE EL VALOR AL TIEMPO DE LA EMBARCADA, EL MAXIMO QUE CUBRIRIA ES $5,000 POR ANIMAL.</span><br />
+                <b>SECTION 3:</b>
+
+                A copy of Carrier’s Terms and Conditions of Shipment, a document separate from this bill of lading’s Contract Terms and Conditions, may be obtained from Carrier’s
+                address identified above. SHIPPER ACKNOWLEDGES IT HAS OBTAINED AND READ A COPY OF CARRIER’S TERMS AND CONDITIONS OF SHIPMENT OR THAT IT HAS BEEN
+                OFFERED AND HAS DECLINED THE OPPORTUNITY TO DO SO, BUT IN ANY EVENT SHIPPER ACCEPTS AND AGREES TO BE BOUND BY<span>
+                    THE PROVISIONSOF SAID
+                    TERMS AND CONDITIONS OF SHIPMENT.
+                </span>
+            </p><br />
+        </div>
+
+        <div  style="display: inline-block;">
+            <b>
+                BOB HUBBARD HORSE TRANSPORTATION,INC.
+            </b>
+        </div>
+        
+        <div style="margin-top:20px;padding-bottom:20px;page-break-after: always">
+            <div>
+                Carrier per(Agent Or Driver)<input type="text" readonly value="@Model.CarrierPerAgentOrDriver" style="width: 471px; height: 24px; border: none; border-bottom: 1px solid black; background-color: rgb(161, 221, 229);" />
+                
+            </div>
+
+            <h6 style="text-align:center; color:red">
+                SEE REVERSE OR PAGE 2 FOR ADDITIONAL TERMS AND CONDITIONS
+            </h6>
+        </div>
+
+
+        <div >
+            <p style="padding-bottom:3px">2</p><br />
+            <p style="font-size:19px">
+                <b>SECTION 4:</b> Attendants provided by Shipper or Shipper’s agent will be transported without charge, together with their beds, bedding and baggage, but in
+                consideration of such free transportation Carrier shall not be responsible other than as a private carrier
+                , for any personal injury or death to said
+                attendants or loss of or damage to their belongings.
+                Attendants must ride in the body of the vehicle where they may readily care for the
+                Shipment at all times. In consideration of the carriage of an attendant or attendants provided by Shipper
+                , shipper agrees to indemnify and save
+                harmless Carrier from all demands of every kind, nature and description by reason of personal injury sustained by said attendant(s) whether the same be caused
+                by negligence or otherwise.<br />
+                <b>SECTION 5:</b>
+                Cost for attendants employed by Carrier accompanying and caring for Shipper’s horses will be passed on to Shipper.<br />
+                <b>SECTION 6:</b>
+                Beneficial Owner of the property shipped hereunder is liable for payment of all charges, if such charges are not paid by Shipper.<br />
+                <b>
+                    SECTION 7:
+                </b>
+                Claims for loss or damage are governed by the
+                provisions of 49 C.F.R. 370. Claims for duplicate payment and overcharges are governed by the provisions
+                of 49 C.F.R. 378. Claims must be filed in writing with the appropriate Carrier within nine (9) months after delivery or the property (or in case of export traffic, within nine (9)
+                months after delivery at port of export) or, in the case of failure to make delivery, within nine (9) months after a reasonable time for delivery has lapsed. Suits shall be
+                instituted against any Carrier only within two (2) years and one (1) day from the day when notice in writing is given by the Carrier to the Claimant that the Carrier has
+                disallowed the claim or any part or parts thereof specified in the notice. Where claims are not filed and suits are not instituted thereon in accordance with the forgoing
+                provision, no Carrier hereunder shall be liable and such claims will not be paid. Should Bob Hubbard Horse Transportation, Inc. successfully defend itself in any federal
+                court action claiming loss or damage to cargo, Bob Hubbard Horse Transportation, Inc. shall be entitled to recover attorney fees and costs as set forth in its Terms and
+                Conditions of Shipment.<br />
+                <b>SECTION 8:</b>
+                Following presentation of a billing statement from the Carrier the person responsible for payment of such charges shall have a credit period of 30 days in
+                which to make payment. Accounts unpaid as of the expiration of the credit period shall be subject to a service charge of one percent per month or fraction thereof (12
+                percent per annum) on the unpaid balance, beginning with the day following the last day of such credit period. In addition, accounts unpaid after 45 days shall be subject
+                to a late fee of $25.00 per month until balance is paid in full.<br />
+                <b>
+                    SECTION 9:
+                </b>
+                Upon arrival of the animal(s) and paraphernalia at destination, unless prior arrangements are made, Shipper or the person who is to receive said animal(s)
+                shall forthwith receive said animal(s) and paraphernalia and pay the charges due, if not prepaid, and if Shipper or the person to receive said animal(s) fails or refuses to
+                duly receive said animal(s) and paraphernalia and pay charges due, Carrier or a connecting Carrier having said animal(s) and paraphernalia in its charge, may, as agent
+                or Shipper, have said animal(s) and paraphernalia provided for in some suitable place at the cost and risk of Shipper, and subject to a lien for all freight and other lawful
+                charges including a reasonable charge for storage. Carrier may at any time or times thereafter sell said animal(s) and/or paraphernalia or any number of them, at public
+                or private sale, without notice, as Carrier may deem necessary, and apply the proceeds arising therefrom, or so much as may be needed for the payment of any charges
+                that may be due Carrier plus any other necessary costs and expenses.<br />
+                <b>SECTION 10:</b>
+                Where import regulations of the country/state/province of destination or any intermediate country/state/province require certificate(s) relating to the
+                health of animals, the cost of any necessary veterinary expense shall be borne by the Shipper and is not included in Carrier’s Established Rate. All other charges
+                incidental to international border and interstate crossings including user fees shall be borne by Shipper and are likewise not included in Carrier’s Established Rate.<br />
+                <b>SECTION 11:</b>
+                Shipper and Carrier agree the laws of the United States regarding the Carrier’s maximum liability for cargo loss apply regardless of the point of origin or the
+                routing of the shipment, and, where the Carmack Amendment does not apply in accordance with its terms, the parties hereby agree and incorporate the same by
+                reference into this contract.;<br />
+                <b>SECTION 12:</b>
+                All duties, taxes, imports or levies of any kind payable at the port of destination, and any expenses properly incurred in relation
+                to the animals after arrival
+                at the port of destination or any intermediate port before delivery to the one receiving the animal(s) are payable by the one receiving the animal(s) but the Shipper shall
+                indemnify the Carrier against any such payments which the Carrier shall be required or deem it necessary to make.<br />
+                <b>
+                    SECTION 13:
+                </b>
+                The Shipper individually or through Shipper’s agents warrants the animals are in all respects fit and suitable for the intended transportation.<br />
+                <b>SECTION 14:</b>
+                In the event Shipper’s account is turned over by Carrier for collection, Shipper or Beneficial Owner agrees to pay all collection and court costs, legal
+                interest and reasonable attorney fees. Shippers and their agents residing in California agree to submit to the jurisdiction of San Bernardino County for purposes of
+                dispute resolution via the courts, arbitration or mediation for California intrastate claims.<br />
+                <b>
+                    SECTION 15:
+                </b>
+                Shipper and Carrier agree signatures obtained by electronic means are valid for transacting business with each other, as is a signature provided manually,
+                and agree not to withdraw its consent to the use of electronic signatures without providing written or electronic notice to the other at least ten (10) days in advance of
+                consent being withdrawn.<br />
+                <b>SECTION 16:</b>
+                Shipper, individually or through its agent, and Carrier agree if Shipper or Shipper’s agent does not receive a copy of the bill of lading at point of the
+                Shipment’s origin, Carrier will provide a copy of the bill of lading to Shipper or Shipper’s agent at final destination or mail it to Shipper or Shipper’s agent after delivery,
+                upon receipt by Carrier of Shipper’s or Shipper’s agent’s written request to do so.<br />
+                <b>
+                    SECTION 17:
+                </b>
+                In the event any part, portion, term or condition of Carrier’s bill of lading or Terms and Conditions of Shipment shall be held to be unenforceable, the
+                remaining parts, portions, terms or conditions thereof shall nevertheless continue to be valid and enforceable as though the invalid or unenforceable part, portion, term
+                or condition has not been included herein.
+            </p>
+
+
+        </div>
+
+        <div style="display: inline-block;">
+            <b>
+                BOB HUBBARD HORSE TRANSPORTATION,INC.
+            </b>
+        </div>
+
+        <div style="margin-top:10px;padding-bottom:10px">
+            <div>
+                Carrier per(Agent Or Driver)<input type="text" readonly value="@Model.CarrierPerAgentOrDriver" style="width: 471px; height: 35px; border: none; border-bottom: 1px solid black; background-color: rgb(161, 221, 229);" />
+
+            </div>
+
+            <h5 style="text-align:center">
+                <b>ATTENDANT’S CONTRACT</b>
+            </h5><br />
+            <p style="text-align:center;font-size:19px">READ CAREFULLY. THIS IS A CONTRACT OF INDEMNIFICATION AFFECTING YOUR RIGHTS.</p>
+       <br />
+            <p style="font-size:19px">
+                In consideration of the undersigned’s request for transportation without charge in the body of the vehicle wherein animals are transported, said animals being under the
+                full care of the undersigned, the undersigned hereby agrees to indemnify, defend and hold Bob Hubbard Horse Transportation, Inc. of Colton, CA, harmless from any
+                and all loss, cost, claim, expense, cause of action, loss of use and liability by reason of injury (including death) to persons or damage to property arising out of the use,
+                operation, maintenance or control of cargo or motor vehicle equipment the undersigned may have against Bob Hubbard Horse Transportation, Inc., its agents,
+                employees, officers, successors and assigns. Further, each of the undersigned attendants agrees to assume all risk of injury to himself/herself while being transported
+                pursuant to this agreement.<br />
+                I, the undersigned, have read this CONTRACT OF INDEMNIFICATION and understand its terms. I execute it voluntarily and with full knowledge of its significance.<br /><br />
+             &nbsp;&nbsp;   IN WITNESS WHEREOF, the undersigned has executed this CONTRACT OF INDEMNIFICATION on the day and year first above written.
+            </p>
+        </div>
+
+        <div style="margin-top:20px">
+            <div>
+                Witness(es) &nbsp;<input type="text"  readonly style="width: 471px; height: 35px; border: none; border-bottom: 1px solid black; background-color: rgb(161, 221, 229);" />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                Attendants<input type="text" readonly  style="width: 471px; height: 35px; border: none; border-bottom: 1px solid black; background-color: rgb(161, 221, 229);" />
+
+            </div>
+
+        </div>
+    </section>
+
+</body>
+
+</html>
